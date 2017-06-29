@@ -47,3 +47,42 @@ In the latter example (written as an ES6 function with an implicit return), rath
 ### Further Research
 * Creating Stateless Function Components from the React Enlightenment book
 * Functional Components vs. Stateless Functional Components vs. Stateless Components from Tyler
+
+## State
+Earlier in this Lesson, we learned that props refer to attributes from parent components. In the end, props represent "read-only" data that are immutable.
+
+A component's state, on the other hand, represents mutable data that ultimately affects what is rendered on the page. State is managed internally by the component itself and is meant to change over time, commonly due to user input (e.g., clicking on a button on the page).
+
+## State Recap
+By having a component manage its own state, any time there are changes made to that state, React will know and automatically make the necessary updates to the page.
+
+This is one of the key benefits of using React to build UI components: when it comes to re-rendering the page, we just have to think about updating state. We don't have to keep track of exactly which parts of the page change each time there are updates. We don't need to decide how we will efficiently re-render the page. React compares the previous output and new output, determines what has changed, and makes these decisions for us. This process of determining what has changed in the previous and new outputs is called Reconciliation.
+
+## Update state with setState
+Earlier in this lesson, we saw how we can define a component's state at the time of initialization. Since state reflects mutable information that ultimately affects rendered output, a component may also update its state throughout its lifecycle using this.setState(). As we've learned, when local state changes, React will trigger a re-render of the component.
+
+There are two ways to use setState(). The first is to merge state updates. Consider a snippet of the following component:
+
+class Email extends React.Component {
+  state = {
+    subject: '',
+    message: ''
+  }
+  // ...
+});
+Though the initial state of this component contains two properties (subject and message), they can be updated independently. For example:
+
+this.setState({
+  subject: 'Hello! This is a new subject'
+})
+This way, we can leave this.state.message as-is, but replace this.state.subject with a new value.
+
+The second way we can use setState() is by passing in a function rather than an object. For example:
+
+this.setState((prevState) => ({
+  count: prevState.count + 1
+}))
+Here, the function passed in takes a single prevState argument. When a component's new state depends on the previous state (i.e., we are incrementing count in the previous state by 1), we want to use the functional setState().
+
+## setState() Recap
+While a component can set its state when it initializes, we expect that state to change over time, usually due to user input. The component is able to change its own internal state using this.setState(). Each time state is changed, React knows and will call render() to re-render the component. This allows for fast, efficient updates to your app's UI.
