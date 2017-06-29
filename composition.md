@@ -22,3 +22,28 @@ All props are stored on the this.props object. So to access this text prop from 
 render() {
     return <div>{this.props.text}</div>
 }
+
+## Stateless Functional Components Recap
+If your component does not keep track of internal state (i.e., all it really has is just a render() method), you can declare the component as a Stateless Functional Component.
+
+Remember that at the end of the day, React components are really just JavaScript functions that return HTML for rendering. As such, the following two examples of a simple Email component are equivalent:
+
+class Email extends React.Component {
+  render() {
+    return (
+      <div>
+        {this.props.text}
+      </div>
+    );
+  }
+};
+const Email = (props) => (
+  <div>
+    {props.text}
+  </div>
+);
+In the latter example (written as an ES6 function with an implicit return), rather than accessing props from this.props, we can pass in props directly as an argument to the function itself. In turn, this regular JavaScript function can serve as the Email component's render() method.
+
+### Further Research
+* Creating Stateless Function Components from the React Enlightenment book
+* Functional Components vs. Stateless Functional Components vs. Stateless Components from Tyler
