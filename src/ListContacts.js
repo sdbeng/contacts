@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 //refactor into a functional component
 function ListContacts(props){
   return (
     <ol className='contact-list'>
-      {props.contacts.map(c => (
+      {props.contacts.map((c) => (
         <li key={c.id} className='contact-list-item'>
           <div className='contact-avatar' style={{backgroundImage:`url(${c.avatarURL})`}}>
           </div>
@@ -12,7 +13,7 @@ function ListContacts(props){
             <p>{c.name}</p>
             <p>{c.email}</p>
           </div>
-          <button className='contact-remove'>
+          <button onClick={() => props.onDeleteContact(c)} className='contact-remove'>
             Remove
           </button>
         </li>
@@ -43,4 +44,9 @@ function ListContacts(props){
 //     )
 //   }
 // }
+
+ListContacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDeleteContact: PropTypes.func.isRequired
+}
 export default ListContacts

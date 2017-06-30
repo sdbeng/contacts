@@ -86,3 +86,12 @@ Here, the function passed in takes a single prevState argument. When a component
 
 ## setState() Recap
 While a component can set its state when it initializes, we expect that state to change over time, usually due to user input. The component is able to change its own internal state using this.setState(). Each time state is changed, React knows and will call render() to re-render the component. This allows for fast, efficient updates to your app's UI.
+
+## Type checking a Component's Props with PropTypes
+As we implement additional features into our app, we may soon find ourselves debugging our components more frequently. For example, what if the props that we pass to our components end up being an unintended data type (e.g. an object instead of an array)? PropTypes is a package that lets us define the data type we want to see right from the get-go and warn us during development if the prop that's passed to the component doesn't match what is expected.
+
+### Note: Now propTypes is a separate package !!
+
+To use PropTypes in our app, we need to install prop-types:
+
+npm install --save prop-types
