@@ -32,3 +32,39 @@ We covered a lot in this lesson, and you've made great progress. Here are some r
 Thinking in React
 Functional Components vs. Stateless Functional Components vs. Stateless Components
 Controlled Components
+
+## Lesson summary
+To recap, lifecycle events are special methods that React provides that allow us to hook into different points in a component's life to run some code. Now there are a number of different lifecycle events and they will run at different points, but we can break them down into three distinct categories:
+
+Adding to the DOM
+These lifecycle events are called when a component is being added to the DOM:
+
+constructor()
+componentWillMount()
+render()
+componentDidMount()
+Re-rendering
+These lifecycle events are called when a component is re-rendered to the DOM
+
+componentWillReceiveProps()
+shouldComponentUpdate()
+componentWillUpdate()
+render()
+componentDidUpdate()
+Removing from the DOM
+This lifecycle event is called when a component is being removed from the DOM
+
+componentWillUnmount()
+It's easier to tell where all of these fit together with the following graphic:
+_The React Lifecycle Events listed out where they fall in a component's life._
+The React Lifecycle Events listed out where they fall in a component's life.
+Starting from the top left of the image, everything starts when ReactDOM renders the component.
+
+As you can see, between the list and this graphic there are a number of different lifecycle events. However, the most commonly used ones are componentDidMount(), componentWillMount(), componentWillUnmount(), and componentWillReceiveProps().
+
+Further Research
+componentWillMount() from the React Docs
+componentDidMount() from the React Docs
+componentWillUnmount() from the React Docs
+componentWillReceiveProps() from the React Docs
+Component Lifecycles from the React Docs
